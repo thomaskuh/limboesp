@@ -1,0 +1,63 @@
+{
+  "GEN": {
+    "TITLE": "LimboESP",
+    "ID": "ID",
+    "UUID": "UUID",
+    "NAME": "Name",
+    "PLATFORM": "Platform",
+    "SIZE": "Size",
+    "HASH": "Hash",
+    "VERSION": "Version"
+  },
+  "ACTION": {
+    "RELOAD": "Reload",
+    "CREATE": "Create",
+    "MANAGE": "Manage"
+  },
+  "HOME": {
+    "TITLE": "LimboESP - Your ESP OTA Firmware Update Manager"
+  },
+  "DEVICE": {
+    "TITLES": "Devices",
+    "TITLE": "Device",
+    "TSCHECK": "Checked",
+    "TSUPDATE": "Updated"
+  },
+  "APP": {
+    "TITLES": "Apps",
+    "TITLE": "App"
+  },
+  "VERSION": {
+    "TITLES": "Versions",
+    "UPLOAD": "Upload new firmware file"
+  },
+  "LOGIN": {
+    "TITLE": "Login",
+    "USER": "Username",
+    "PASS": "Password",
+    "SUBMIT": "Let me in",
+    "IN": "Login",
+    "OUT": "Logout"
+  },
+  "MSG": {
+    "UPLOAD_OK": "Upload finished.",
+    "UPLOAD_NOK": "{{no}} files failed."
+  },
+  "ERROR": {
+    "NETWORK": "Network error.",
+    "SYSTEM": "System failure.",
+    "UNAUTHORIZED": "Unauthorized. Please log in.",
+    "FORBIDDEN": "Forbidden. Permission denied.",
+    "NOTFOUND": "Not found.",
+    "VALIDATION": "Validation failed.",
+    
+    "DETAIL": {
+        "VAL_APP_NAME_INVALID": "Name must be specified.",
+        "VAL_APP_NAME_EXISTS": "Name already exists.",
+        "VAL_APP_PLATFORM_INVALID": "Platform must be specified.",
+        "VAL_VERSION_NAME_INVALID": "Name/Filename must be specified.",
+        "VAL_VERSION_BIN_EMPTY": "Binary not transfered or empty.",
+        "VAL_VERSION_BIN_DUPE": "Same binary already bound to version {{no}} - {{name}}."
+    }
+  }
+}

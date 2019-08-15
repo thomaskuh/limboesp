@@ -1,0 +1,49 @@
+<h1 class="title">{{'APP.TITLE'|translate}}: {{$ctrl.item.name}}</h1>
+<hr />
+
+<h1 class="title">{{'VERSION.TITLES'|translate}}:
+	{{$ctrl.item.name}}</h1>
+
+<table
+	class="table is-fullwidth is-striped tk-table-actions tk-table-middle">
+	<thead>
+		<tr>
+			<th>{{'GEN.ID'|translate}}</th>
+			<th>{{'GEN.VERSION'|translate}}</th>
+			<th>{{'GEN.NAME'|translate}}</th>
+			<th>{{'GEN.SIZE'|translate}}</th>
+			<th>{{'GEN.HASH'|translate}}</th>
+			<th>
+				<button ng-click="$ctrl.reload()" class="button">
+					<i class="fas fa-sync">&nbsp;</i>{{'ACTION.RELOAD'|translate}}
+				</button>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="ver in $ctrl.versions">
+			<td>{{ver.id}}</td>
+			<td>{{ver.nr}}</td>
+			<td>{{ver.name}}</td>
+			<td>{{ver.binSize}}</td>
+			<td>{{ver.binHash}}</td>
+			<td>
+				<button ng-click="$ctrl.reload()" class="button">
+					<i class="fas fa-sync">&nbsp;</i>{{'ACTION.RELOAD'|translate}}
+				</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5"></td>
+			<td>
+				<!-- Upload files -->
+				<form>
+					<input class="fileinput" id="fileSelectore" type="file" ng-model-instant name="Files"
+						onchange="angular.element(this).scope().$ctrl.onClassicUpload(this);" />
+					<button onclick="document.getElementById('fileSelectore').click();" class="button is-success">
+						<i class="fas fa-file-upload">&nbsp;</i>{{'VERSION.UPLOAD'|translate}}
+					</button>
+				</form>
+			</td>
+		</tr>
+</table>

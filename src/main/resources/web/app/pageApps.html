@@ -1,0 +1,41 @@
+<h1 class="title">{{'APP.TITLES'|translate}}</h1>
+
+<table class="table is-fullwidth is-striped tk-table-actions tk-table-middle">
+  <thead>
+    <tr>
+      <th>{{'GEN.ID'|translate}}</th>
+      <th>{{'GEN.NAME'|translate}}</th>
+      <th>{{'GEN.PLATFORM'|translate}}</th>
+      <th>
+        <button ng-click="$ctrl.reload()" class="button"><i class="fas fa-sync">&nbsp;</i>{{'ACTION.RELOAD'|translate}}</button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in $ctrl.items">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.platform}}</td>
+      <td>
+        <a class="button is-link" href="#/app/{{item.id}}"><i class="fas fa-edit">&nbsp;</i>{{'ACTION.MANAGE'|translate}}</a>
+      </td>
+    </tr>
+  <tr>
+    <td></td>
+    <td>
+      <div class="field">
+        <div class="control">
+          <input ng-model="$ctrl.nu.name" class="input" type="text">
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="select">
+        <select ng-model="$ctrl.nu.platform" ng-options="pl for pl in $ctrl.platforms"></select>
+      </div>
+    </td>
+    <td>
+      <button ng-click="$ctrl.create()" class="button is-success"><i class="fas fa-plus">&nbsp;</i>{{'ACTION.CREATE'|translate}}</button>
+    </td>
+  </tr>    
+</table>

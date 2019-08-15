@@ -1,0 +1,23 @@
+<h1 class="title">{{'HOME.TITLE'|translate}}</h1>
+
+<hr/>
+<h2 class="subtitle">Translations</h2>
+<ul>
+  <li>Title: {{'GEN.TITLE'|translate}}</li>
+</ul>
+
+<hr/>
+<h2 class="subtitle">Toasts</h2>
+<button class="button" ng-click="$ctrl.toastInfo()">Info</button>
+<button class="button" ng-click="$ctrl.toastError()">Error</button>
+
+<hr/>
+<h2 class="subtitle">Actions</h2>
+<button class="button" ng-click="$ctrl.shutdown()">Shutdown</button>
+<button class="button" ng-click="$ctrl.sleep()">Sleep</button>
+<button class="button" ng-click="$ctrl.authProbe()">Basic Auth Probe</button>
+<button class="button" ng-click="$ctrl.authClear()">Basic Auth Clear</button>
+<button class="button" ng-click="$ctrl.errorNotFound()">Error - 404</button>
+<button class="button" ng-click="$ctrl.errorKnown()">Error - 400 - Known key</button>
+<button class="button" ng-click="$ctrl.errorUnknown()">Error - 400 - Unknown key</button>
+<button class="button" ng-click="$ctrl.errorDetails()">Error - 400 - With details</button>
