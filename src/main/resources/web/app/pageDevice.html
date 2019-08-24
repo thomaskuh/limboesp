@@ -1,0 +1,68 @@
+<h1 class="title">{{'GEN.DEVICE'|translate}}</h1>
+
+<div class="columns">
+  <div class="column">
+    <div class="card">
+      <header class="card-header has-background-light">
+        <p class="card-header-title">{{'GEN.CONFIG'|translate}}</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+			    <div class="field">
+			      <label class="label">{{'GEN.NAME'|translate}}</label>
+			      <div class="control"><input class="input" type="text" ng-change="$ctrl.dirty = true" ng-model="$ctrl.item.name"></div>
+			    </div>
+          <div class="field">
+            <label class="label">{{'GEN.STATE'|translate}}</label>
+            <div class="control"><div class="select"><select ng-change="$ctrl.dirty = true"  ng-model="$ctrl.item.state" ng-options="state for state in $ctrl.states"></select></div></div>
+          </div> 			    
+			    <div class="field">
+			      <label class="label">{{'GEN.APP'|translate}}</label>
+			      <div class="control"><div class="select"><select ng-change="$ctrl.dirty = true"  ng-model="$ctrl.item.app" ng-options="app.name for app in $ctrl.apps track by app.id"></select></div></div>
+			    </div>        
+        </div>
+        <button ng-if="$ctrl.dirty" ng-click="$ctrl.save()" class="button is-success"><i class="fas fa-save">&nbsp;</i>{{'ACTION.SAVE'|translate}}</button>
+        <button ng-if="$ctrl.dirty" ng-click="$ctrl.undo()" class="button is-danger"><i class="fas fa-undo">&nbsp;</i>{{'ACTION.UNDO'|translate}}</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <header class="card-header has-background-light">
+        <p class="card-header-title">{{'GEN.INFO'|translate}}</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <table class="table is-fullwidth is-striped">
+            <tbody>
+              <tr><th>{{'GEN.ID'|translate}}</th><td>{{$ctrl.item.id}}</td></tr>
+              <tr><th>{{'GEN.UUID'|translate}}</th><td>{{$ctrl.item.uuid}}</td></tr>
+              <tr><th>{{'GEN.PLATFORM'|translate}}</th><td>{{$ctrl.item.platform}}</td></tr>
+              <tr><th>{{'GEN.ADDRESS'|translate}}</th><td>{{$ctrl.item.source}}</td></tr>
+              <tr><th>{{'GEN.STATE'|translate}}</th><td>{{$ctrl.item.state}}</td></tr>
+              <tr><th>{{'GEN.INFO'|translate}}</th><td>{{$ctrl.item.info}}</td></tr>
+              <tr><th>{{'GEN.REGISTERED'|translate}}</th><td>{{$ctrl.item.tsCreate|date:'yyyy-MM-dd HH:mm:ss'}}</td></tr>
+              <tr><th>{{'GEN.LAST_CHECK'|translate}}</th><td>{{$ctrl.item.tsCheck|date:'yyyy-MM-dd HH:mm:ss'}}</td></tr>
+              <tr><th>{{'GEN.LAST_UPDATE'|translate}}</th><td>{{$ctrl.item.tsUpdate|date:'yyyy-MM-dd HH:mm:ss'}}</td></tr>
+              <tr><th>{{'GEN.SIZE'|translate}} ({{'GEN.FLASH'|translate}})</th><td>{{$ctrl.item.sizeChip}}</td></tr>
+              <tr><th>{{'GEN.SIZE'|translate}} ({{'GEN.FREE'|translate}})</th><td>{{$ctrl.item.sizeAppFree}}</td></tr>
+              <tr><th>{{'GEN.SIZE'|translate}} ({{'GEN.USED'|translate}})</th><td>{{$ctrl.item.sizeAppUsed}}</td></tr>
+              <tr>
+                <th>{{'GEN.VERSION'|translate}} ({{'GEN.CURRENT'|translate}})</th>
+                <td ng-if="$ctrl.item.versionCurrent">{{$ctrl.item.versionCurrent.nr}} - {{$ctrl.item.versionCurrent.name}}</td>
+                <td ng-if="!$ctrl.item.versionCurrent">N/A</td>
+              </tr>              
+              <tr>
+                <th>{{'GEN.VERSION'|translate}} ({{'GEN.LATEST'|translate}})</th>
+                <td ng-if="$ctrl.item.versionLatest">{{$ctrl.item.versionLatest.nr}} - {{$ctrl.item.versionLatest.name}}</td>
+                <td ng-if="!$ctrl.item.versionLatest">N/A</td>
+              </tr>         
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+		
+  </div>
+</div>

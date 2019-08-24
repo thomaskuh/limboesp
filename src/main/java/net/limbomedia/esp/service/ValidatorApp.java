@@ -6,15 +6,16 @@ import java.util.Optional;
 import org.kuhlins.webkit.ex.ValidationException;
 import org.kuhlins.webkit.ex.model.ErrorDetail;
 
+import net.limbomedia.esp.api.AppCreate;
+import net.limbomedia.esp.api.AppUpdate;
 import net.limbomedia.esp.api.Errors;
-import net.limbomedia.esp.api.ui.AppCreate;
 import net.limbomedia.esp.entity.AppEntity;
 import net.limbomedia.esp.entity.VersionEntity;
 import net.limbomedia.esp.repo.RepoApp;
 
 public class ValidatorApp {
 
-  public static void validateCreate(AppCreate item, RepoApp repositoryApp) {
+  public static void validateCreate(AppCreate item, RepoApp repoApp) {
     ValidationException ve = new ValidationException();
 
     if (item.getName() == null || item.getName().isEmpty()) {
@@ -27,12 +28,28 @@ public class ValidatorApp {
 
     ve.throwOnDetails();
 
-    if (repositoryApp.findOneByName(item.getName()).isPresent()) {
+    if (repoApp.findOneByName(item.getName()).isPresent()) {
       ve.withDetail(new ErrorDetail(Errors.VAL_APP_NAME_EXISTS.name()));
     }
 
     ve.throwOnDetails();
   }
+  
+  public static void validateUpdate(AppEntity existingApp, AppUpdate item, RepoApp repoApp) {
+    ValidationException ve = new ValidationException();
+
+    if (item.getName() == null || item.getName().isEmpty()) {
+      ve.withDetail(new ErrorDetail(Errors.VAL_APP_NAME_INVALID.name()));
+    }
+    
+    ve.throwOnDetails();
+    
+    if (!existingApp.getName().equals(item.getName()) && repoApp.findOneByName(item.getName()).isPresent()) {
+      ve.withDetail(new ErrorDetail(Errors.VAL_APP_NAME_EXISTS.name()));
+    }
+
+    ve.throwOnDetails();
+  }  
   
   public static void validateVersionCreate(String filename, InputStream is) {
     ValidationException ve = new ValidationException();

@@ -1,4 +1,4 @@
-package net.limbomedia.esp.api.ui;
+package net.limbomedia.esp.api;
 
 import java.io.Serializable;
 
@@ -9,6 +9,7 @@ public class Version implements Serializable {
   private long id;
   private long nr;
   private String name;
+  private long ts;
   private String binId;
   private long binSize;
   private String binHash;
@@ -59,6 +60,20 @@ public class Version implements Serializable {
 
   public void setBinHash(String binHash) {
     this.binHash = binHash;
+  }
+
+  public long getTs() {
+    return ts;
+  }
+
+  public void setTs(long ts) {
+    this.ts = ts;
+  }
+
+  @Override
+  public String toString() {
+    return "Version [id=" + id + ", nr=" + nr + ", name=" + name + ", ts=" + ts + ", binId=" + binId + ", binSize="
+        + binSize + ", binHash=" + binHash + "]";
   }
 
 }

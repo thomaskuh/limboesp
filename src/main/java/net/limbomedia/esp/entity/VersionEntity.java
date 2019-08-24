@@ -18,6 +18,9 @@ public class VersionEntity extends IdEntity {
 
   @Column(nullable = false)
   private long nr;
+  
+  @Column(nullable = false)
+  private long ts;
 
   /**
    * Optional human readable name. Must be at least an empty string instead of
@@ -88,5 +91,21 @@ public class VersionEntity extends IdEntity {
   public void setBinHash(String binHash) {
     this.binHash = binHash;
   }
-
+  
+  public long getTs() {
+    return ts;
+  }
+  
+  public void setTs(long ts) {
+    this.ts = ts;
+  }
+  
+  @Override
+  public String toString() {
+    return "Version [app=" + app + ", nr=" + nr + ", name=" + name + ", ts=" + ts + ", binId=" + binId + ", binSize=" + binSize
+        + ", binHash=" + binHash + "]";
+  }
+  
+  
+  
 }

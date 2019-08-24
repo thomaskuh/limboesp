@@ -17,5 +17,5 @@ public class PersistenceConfig {
   public BinStore beanBinStore(DataSource dataSource) {
     return new BinStoreDb(dataSource);
   }
-  
+
 }

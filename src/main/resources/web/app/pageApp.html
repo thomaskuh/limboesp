@@ -1,49 +1,60 @@
-<h1 class="title">{{'APP.TITLE'|translate}}: {{$ctrl.item.name}}</h1>
-<hr />
+<h1 class="title">{{'GEN.APP'|translate}}</h1>
 
-<h1 class="title">{{'VERSION.TITLES'|translate}}:
-	{{$ctrl.item.name}}</h1>
+<div class="card">
+  <header class="card-header has-background-light">
+    <p class="card-header-title">{{'GEN.CONFIG'|translate}}</p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <div class="field">
+        <label class="label">{{'GEN.NAME'|translate}}</label>
+        <div class="control"><input class="input" type="text" ng-change="$ctrl.dirty = true" ng-model="$ctrl.item.name"></div>
+      </div>
+      <div class="field">
+        <label class="label">{{'GEN.PLATFORM'|translate}}</label>
+        <div class="control"><input class="input" type="text" value="{{$ctrl.item.platform}}" disabled="disabled"></div>
+      </div>          
+    </div>
+    <button ng-if="$ctrl.dirty" ng-click="$ctrl.save()" class="button is-success"><i class="fas fa-save">&nbsp;</i>{{'ACTION.SAVE'|translate}}</button>
+    <button ng-if="$ctrl.dirty" ng-click="$ctrl.undo()" class="button is-danger"><i class="fas fa-undo">&nbsp;</i>{{'ACTION.UNDO'|translate}}</button>
+  </div>
+</div>
 
-<table
-	class="table is-fullwidth is-striped tk-table-actions tk-table-middle">
-	<thead>
-		<tr>
-			<th>{{'GEN.ID'|translate}}</th>
-			<th>{{'GEN.VERSION'|translate}}</th>
-			<th>{{'GEN.NAME'|translate}}</th>
-			<th>{{'GEN.SIZE'|translate}}</th>
-			<th>{{'GEN.HASH'|translate}}</th>
-			<th>
-				<button ng-click="$ctrl.reload()" class="button">
-					<i class="fas fa-sync">&nbsp;</i>{{'ACTION.RELOAD'|translate}}
-				</button>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="ver in $ctrl.versions">
-			<td>{{ver.id}}</td>
-			<td>{{ver.nr}}</td>
-			<td>{{ver.name}}</td>
-			<td>{{ver.binSize}}</td>
-			<td>{{ver.binHash}}</td>
-			<td>
-				<button ng-click="$ctrl.reload()" class="button">
-					<i class="fas fa-sync">&nbsp;</i>{{'ACTION.RELOAD'|translate}}
-				</button>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="5"></td>
-			<td>
-				<!-- Upload files -->
-				<form>
-					<input class="fileinput" id="fileSelectore" type="file" ng-model-instant name="Files"
-						onchange="angular.element(this).scope().$ctrl.onClassicUpload(this);" />
-					<button onclick="document.getElementById('fileSelectore').click();" class="button is-success">
-						<i class="fas fa-file-upload">&nbsp;</i>{{'VERSION.UPLOAD'|translate}}
-					</button>
-				</form>
-			</td>
-		</tr>
-</table>
+<br/>
+
+<div class="card">
+  <header class="card-header has-background-light">
+    <p class="card-header-title">{{'GEN.VERSIONS'|translate}}</p>
+  </header>
+  <div class="card-content">
+    <table class="table is-fullwidth is-striped tk-table-actions tk-table-middle">
+      <thead>
+        <tr>
+          <th>{{'GEN.VERSION'|translate}}</th>
+          <th>{{'GEN.DATE'|translate}}</th>
+          <th>{{'GEN.NAME'|translate}}</th>
+          <th>{{'GEN.SIZE'|translate}}</th>
+          <th>{{'GEN.HASH'|translate}}</th>
+          <th>
+	          <form>
+	            <input class="fileinput" id="fileSelectore" type="file" ng-model-instant name="Files" onchange="angular.element(this).scope().$ctrl.onClassicUpload(this);" />
+	            <button onclick="document.getElementById('fileSelectore').click();" class="button is-success">
+	              <i class="fas fa-file-upload">&nbsp;</i>{{'ACTION.UPLOAD'|translate}}
+	            </button>
+	          </form>
+          </th>
+        </tr>
+      </thead>        
+      <tbody>
+        <tr ng-repeat="ver in $ctrl.versions | orderBy:'nr'">
+          <td>{{ver.nr}}</td>
+          <td>{{ver.ts|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td>{{ver.name}}</td>
+          <td>{{ver.binSize}}</td>
+          <td>{{ver.binHash}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>      
+  </div>
+</div>

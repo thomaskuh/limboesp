@@ -6,6 +6,8 @@ app.component('pageApp', {
 	  
 	  ctrl.platforms = ["ESP8266", "ESP32"];
 	  
+	  ctrl.dirty = false;
+	  
 	  ctrl.itemId = null;
 	  ctrl.item = null;
 
@@ -16,15 +18,24 @@ app.component('pageApp', {
       ctrl.reload();
     };
 	  
+    ctrl.setItem = function(responseWithItem) {
+      ctrl.dirty = false;
+      ctrl.item = responseWithItem.data;
+    };
+    
 	  ctrl.reload = function() {
-	    client.appGet(ctrl.itemId).then((resp) => ctrl.item = resp.data);
+	    client.appGet(ctrl.itemId).then(ctrl.setItem);
 	    client.appVersionsGet(ctrl.itemId).then((resp) => ctrl.versions = resp.data);
 	  };
-
-	  ctrl.create = function() {
-	    client.appCreate(ctrl.nu).then((resp) => ctrl.items.push(resp.data));
-	  };
 	  
+    ctrl.save = function() {
+      var req = {name: ctrl.item.name};
+      client.appUpdate(ctrl.item.id, req).then(ctrl.setItem);
+    };
+    
+    ctrl.undo = function() {
+      ctrl.reload();
+    };
 	  
     /* Functions for direct JS calls (non-angular) */ 
     ctrl.onFileSelect = function(valueFiles) {

@@ -3,5 +3,7 @@ app.component('pageHome', {
   bindings: {},
   controller: function(client) {
 	  var ctrl = this;
+	  
+	  client.probe().then((resp) => {});
   }
 });

@@ -1,35 +1,43 @@
 {
   "GEN": {
     "TITLE": "LimboESP",
+    "ADDRESS": "Address",
+    "APP": "App",
+    "APPS": "Apps",
+    "CONFIG": "Configuration",
+    "CURRENT": "Current",
+    "DATE": "Datum",
+    "DEVICE": "Device",
+    "DEVICES": "Devices",
+    "FLASH": "Flash",
+    "FREE": "Free",
+    "HASH": "Hash",
     "ID": "ID",
-    "UUID": "UUID",
+    "INFO": "Info",
+    "LATEST": "Latest",
+    "LAST_CHECK": "Last check",
+    "LAST_UPDATE": "Last update",
+    "NA": "N/A",
     "NAME": "Name",
     "PLATFORM": "Platform",
+    "REGISTERED": "Registered",
     "SIZE": "Size",
-    "HASH": "Hash",
-    "VERSION": "Version"
+    "STATE": "State",
+    "UPTODATE": "Up-to-date",
+    "UUID": "UUID",
+    "USED": "Used",
+    "VERSION": "Version",
+    "VERSIONS": "Versions",
+    "WELCOME": "LimboESP - Your ESP OTA Firmware Update Manager"
   },
   "ACTION": {
-    "RELOAD": "Reload",
+    "CANCEL": "Cancel",
     "CREATE": "Create",
-    "MANAGE": "Manage"
-  },
-  "HOME": {
-    "TITLE": "LimboESP - Your ESP OTA Firmware Update Manager"
-  },
-  "DEVICE": {
-    "TITLES": "Devices",
-    "TITLE": "Device",
-    "TSCHECK": "Checked",
-    "TSUPDATE": "Updated"
-  },
-  "APP": {
-    "TITLES": "Apps",
-    "TITLE": "App"
-  },
-  "VERSION": {
-    "TITLES": "Versions",
-    "UPLOAD": "Upload new firmware file"
+    "MANAGE": "Manage",
+    "RELOAD": "Reload",
+    "SAVE": "Save",
+    "UNDO": "Undo",
+    "UPLOAD": "Upload"
   },
   "LOGIN": {
     "TITLE": "Login",
