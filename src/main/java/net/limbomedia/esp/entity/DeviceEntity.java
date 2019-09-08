@@ -202,11 +202,9 @@ public class DeviceEntity extends IdEntity {
   public void setInfo(String info) {
     this.info = info;
   }
-  
+
   public String toString() {
-    return "Device [id=" + id + ", name=" + name + ", uuid= " + uuid + ", platform=" + platform + ", state=" + state + ", source=" + source + "]";
+    return "Device [id=" + id + ", name=" + name + ", uuid=" + uuid + ", platform=" + platform + ", state=" + state + ", source=" + source + "]";
   }
-  
-  
 
 }

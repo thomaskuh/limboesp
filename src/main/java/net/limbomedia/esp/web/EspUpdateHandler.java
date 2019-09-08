@@ -8,14 +8,14 @@ import org.kuhlins.binstore.IoFunction;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StreamUtils;
 
-import net.limbomedia.esp.api.Esp8266Response;
+import net.limbomedia.esp.api.UpdateHandler;
 import net.limbomedia.esp.api.Version;
 
-public class Esp8266HttpResponse implements Esp8266Response {
+public class EspUpdateHandler implements UpdateHandler {
   
   private HttpServletResponse res;
   
-  public Esp8266HttpResponse(HttpServletResponse res) {
+  public EspUpdateHandler(HttpServletResponse res) {
     this.res = res;
   }
   

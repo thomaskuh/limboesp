@@ -21,10 +21,10 @@ public class SecuredAspect {
   @Autowired
   private HttpServletRequest req;
   
-  @Value("${admin.user}") 
+  @Value("${user}") 
   private String user;
   
-  @Value("${admin.pass}")
+  @Value("${pass}")
   private String pass;
   
   @Around("within(@net.limbomedia.esp.web.Secured *)")

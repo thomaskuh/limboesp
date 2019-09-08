@@ -106,7 +106,7 @@ public class ServiceMgmtImpl implements ServiceMgmt {
     try {
       binId = binStore.write(is);
       binSize = binStore.size(binId);
-      binHash = binStore.read(binId, stream -> {
+      binHash = binStore.readStream(binId, stream -> {
         Hasher hasher = hfMd5.newHasher();
         ByteStreams.copy(stream, Funnels.asOutputStream(hasher));
         return hasher.hash().toString();

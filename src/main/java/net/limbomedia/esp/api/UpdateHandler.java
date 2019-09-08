@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 import org.kuhlins.binstore.IoFunction;
 
-public interface Esp8266Response {
+public interface UpdateHandler {
 
   /**
    * Called when device is not configured for updates or already on latest

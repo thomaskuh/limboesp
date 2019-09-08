@@ -6,20 +6,29 @@ public class Esp8266Request implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  private String source;
+  protected String userAgent;
+  protected String source;
 
-  private String macSta;
-  private String macAp;
+  protected String macSta;
+  protected String macAp;
 
-  private Long sizeChip;
-  private Long sizeFree;
-  private Long sizeSketch;
+  protected Long sizeChip;
+  protected Long sizeFree;
+  protected Long sizeSketch;
 
-  private String hashSketch;
+  protected String hashSketchMd5;
 
-  private String sdk;
-  private String mode;
-  private String version;
+  protected String sdk;
+  protected String mode;
+  protected String version;
+
+  public String getUserAgent() {
+    return userAgent;
+  }
+
+  public void setUserAgent(String userAgent) {
+    this.userAgent = userAgent;
+  }
 
   public String getSource() {
     return source;
@@ -69,12 +78,12 @@ public class Esp8266Request implements Serializable {
     this.sizeSketch = sizeSketch;
   }
 
-  public String getHashSketch() {
-    return hashSketch;
+  public String getHashSketchMd5() {
+    return hashSketchMd5;
   }
 
-  public void setHashSketch(String hashSketch) {
-    this.hashSketch = hashSketch;
+  public void setHashSketchMd5(String hashSketchMd5) {
+    this.hashSketchMd5 = hashSketchMd5;
   }
 
   public String getSdk() {
@@ -103,9 +112,9 @@ public class Esp8266Request implements Serializable {
 
   @Override
   public String toString() {
-    return "Esp8266Request [source=" + source + ", macSta=" + macSta + ", macAp=" + macAp + ", sizeChip=" + sizeChip
-        + ", sizeFree=" + sizeFree + ", sizeSketch=" + sizeSketch + ", hashSketch=" + hashSketch + ", sdk=" + sdk
-        + ", mode=" + mode + ", version=" + version + "]";
+    return "Esp8266Request [source=" + source + ", userAgent=" + userAgent + ", macSta=" + macSta + ", macAp=" + macAp
+        + ", sizeChip=" + sizeChip + ", sizeFree=" + sizeFree + ", sizeSketch=" + sizeSketch + ", hashSketchMd5="
+        + hashSketchMd5 + ", sdk=" + sdk + ", mode=" + mode + ", version=" + version + "]";
   }
 
 }
