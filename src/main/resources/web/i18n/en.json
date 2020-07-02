@@ -6,7 +6,7 @@
     "APPS": "Apps",
     "CONFIG": "Configuration",
     "CURRENT": "Current",
-    "DATE": "Datum",
+    "DATE": "Date",
     "DEVICE": "Device",
     "DEVICES": "Devices",
     "FLASH": "Flash",
@@ -28,7 +28,10 @@
     "USED": "Used",
     "VERSION": "Version",
     "VERSIONS": "Versions",
-    "WELCOME": "LimboESP - Your ESP OTA Firmware Update Manager"
+    "WELCOME": "LimboESP - Your ESP OTA Firmware Update Manager",
+    "IMAGE_DATA": "Data image (SPIFFS)",
+    "PENDING": "Pending",
+    "FETCHED": "Fetched"
   },
   "ACTION": {
     "CANCEL": "Cancel",

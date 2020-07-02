@@ -3,15 +3,15 @@
 <table class="table is-fullwidth is-striped tk-table-actions tk-table-middle">
 	<thead>
 		<tr>
-		  <th>{{'GEN.ID'|translate}}</th>
-      <th>{{'GEN.NAME'|translate}}</th>
-      <th>{{'GEN.UUID'|translate}}</th>
-      <th>{{'GEN.PLATFORM'|translate}}</th>
-      <th>{{'GEN.ADDRESS'|translate}}</th>
-      <th>{{'GEN.STATE'|translate}}</th>
+			<th>{{'GEN.ID'|translate}}</th>
+			<th>{{'GEN.NAME'|translate}}</th>
+			<th>{{'GEN.UUID'|translate}}</th>
+			<th>{{'GEN.PLATFORM'|translate}}</th>
+			<th>{{'GEN.ADDRESS'|translate}}</th>
+			<th>{{'GEN.STATE'|translate}}</th>
 			<th>{{'GEN.LAST_CHECK'|translate}}</th>
 			<th>{{'GEN.APP'|translate}}</th>
-			<th>{{'GEN.UPTODATE'|translate}}</th>
+			<th>{{'GEN.IMAGE_DATA'|translate}}</th>
 			<th>
 				<button ng-click="$ctrl.reload()" class="button">
 					<i class="fas fa-sync">&nbsp;</i>{{'ACTION.RELOAD'|translate}}
@@ -21,18 +21,27 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="item in $ctrl.items" ng-class="{'has-background-warning': item.state == 'NEW', 'has-background-danger': item.state == 'BLOCKED'}">
-      <td>{{item.id}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.uuid}}</td>
-      <td>{{item.platform}}</td>
-      <td>{{item.source}}</td>
-      <td>{{item.state}}</td>
+			<td>{{item.id}}</td>
+			<td>{{item.name}}</td>
+			<td>{{item.uuid}}</td>
+			<td>{{item.platform}}</td>
+			<td>{{item.source}}</td>
+			<td>{{item.state}}</td>
 			<td>{{item.tsCheck | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-			<td ng-if="item.app">{{item.app.name}}</td>
 			<td ng-if="!item.app">{{'GEN.NA'|translate}}</td>
-			<td><i ng-if="$ctrl.isUpToDate(item)" title="{{'GEN.UP_TO_DATE'|translate}}" class="fas fa-check"></i></td>
+			<td ng-if="item.app">
+				{{item.app.name}}
+				<i ng-if="$ctrl.isUpToDate(item)" title="{{'GEN.UP_TO_DATE'|translate}}" class="fas fa-check"></i>
+			</td>
+			<td ng-if="!item.imageData">{{'GEN.NA'|translate}}</td>
+			<td ng-if="item.imageData && item.imageData.tsFetch == 0">
+				<i title="{{'GEN.PENDING'|translate}}" class="fas fa-hourglass-half"></i>
+			</td>
+			<td ng-if="item.imageData && item.imageData.tsFetch > 0">
+				<i title="{{'GEN.FETCHED'|translate}}" class="fas fa-check"></i>
+			</td>
 			<td>
-        <a class="button is-link" href="#/device/{{item.id}}"><i class="fas fa-edit">&nbsp;</i>{{'ACTION.MANAGE'|translate}}</a>
+				<a class="button is-link" href="#/device/{{item.id}}"><i class="fas fa-edit">&nbsp;</i>{{'ACTION.MANAGE'|translate}}</a>
 			</td>
 		</tr>
 </table>

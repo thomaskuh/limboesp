@@ -28,9 +28,8 @@ public class ValidatorUpdate {
       ve.withDetail(new ErrorDetail(Errors.VAL_UPDATE_FIELD_INVALID.name()).withParam("name", "x-esp8266-sdk-version").withParam("value", item.getSdk()).withParam("allowed", "Not-null-empty string"));
     }
     
-    // No "spiffs" mode at the moment. Maybe later.
-    if(item.getMode() == null || !"sketch".equals(item.getMode())) {
-      ve.withDetail(new ErrorDetail(Errors.VAL_UPDATE_FIELD_INVALID.name()).withParam("name", "x-esp8266-mode").withParam("value", item.getMode()).withParam("allowed", "sketch"));
+    if(item.getMode() == null || !("sketch".equals(item.getMode()) || "spiffs".equals(item.getMode()))) {
+      ve.withDetail(new ErrorDetail(Errors.VAL_UPDATE_FIELD_INVALID.name()).withParam("name", "x-esp8266-mode").withParam("value", item.getMode()).withParam("allowed", "sketch, spiffs"));
     }
     
     if(item.getHashSketchMd5() == null || item.getHashSketchMd5().isEmpty()) {
@@ -69,9 +68,8 @@ public class ValidatorUpdate {
       ve.withDetail(new ErrorDetail(Errors.VAL_UPDATE_FIELD_INVALID.name()).withParam("name", "x-esp32-sdk-version").withParam("value", item.getSdk()).withParam("allowed", "Not-null-empty string"));
     }
     
-    // No "spiffs" mode at the moment. Maybe later.
-    if(item.getMode() == null || !"sketch".equals(item.getMode())) {
-      ve.withDetail(new ErrorDetail(Errors.VAL_UPDATE_FIELD_INVALID.name()).withParam("name", "x-esp32-mode").withParam("value", item.getMode()).withParam("allowed", "sketch"));
+    if(item.getMode() == null || !("sketch".equals(item.getMode()) || "spiffs".equals(item.getMode()))) {
+      ve.withDetail(new ErrorDetail(Errors.VAL_UPDATE_FIELD_INVALID.name()).withParam("name", "x-esp32-mode").withParam("value", item.getMode()).withParam("allowed", "sketch, spiffs"));
     }
     
     if(item.getHashSketchMd5() == null || item.getHashSketchMd5().isEmpty()) {

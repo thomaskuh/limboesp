@@ -16,6 +16,7 @@ public interface ServiceMgmt {
   List<Device> devicesGet();
   Device deviceGet(long deviceId);
   Device deviceUpdate(long deviceId, DeviceUpdate body);
+  void deviceImageDataCreate(long deviceId, String filename, InputStream in);
   
   List<App> appsGet(Platform filterPlatform);
   App appGet(long appId);

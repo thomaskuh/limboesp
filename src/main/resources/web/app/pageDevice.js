@@ -1,7 +1,7 @@
 app.component('pageDevice', {
   templateUrl: 'app/pageDevice.html',
   bindings: {},
-  controller: function(client) {
+  controller: function($scope, client, tkUploadService) {
     var ctrl = this;
 	  
     ctrl.states = ['NEW', 'APPROVED', 'BLOCKED'];
@@ -46,6 +46,35 @@ app.component('pageDevice', {
       ctrl.reload();
     }
 
+    /* Functions for direct JS calls (non-angular) */ 
+    ctrl.onFileSelect = function(valueFiles) {
+      $scope.$apply(function() {
+        var files = new Array();
+        for(x in valueFiles) {
+          var el = valueFiles[x];
+          if(el instanceof File) {
+            files.push(el);
+          }
+        };
+
+        /* let upload service manage this */
+        var par = new Object();
+        // par.folder = ctrl.folder == null ? 0 : ctrl.folder.id;
+        tkUploadService.uploadFiles(files, '/api/device/' + ctrl.itemId + '/imageData', par);
+      });
+    };
+
+    ctrl.onClassicUpload = function(element) {
+      ctrl.onFileSelect(element.files);
+      element.value = "";
+    };    
+    
+    // (De)Register upload listener
+    tkUploadService.registerListener(ctrl.reload);
+    /* destructor */
+    $scope.$on('$destroy', function iVeBeenDismissed() {
+      tkUploadService.registerListener(null);
+    });    
     
   }
 });

@@ -8,6 +8,7 @@ import org.kuhlins.binstore.IoFunction;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StreamUtils;
 
+import net.limbomedia.esp.api.ImageData;
 import net.limbomedia.esp.api.UpdateHandler;
 import net.limbomedia.esp.api.Version;
 
@@ -35,6 +36,19 @@ public class EspUpdateHandler implements UpdateHandler {
       StreamUtils.copy(is, res.getOutputStream());
       return null;
     };
+  }
+
+  @Override
+  public IoFunction<InputStream, Void> onUpdate(ImageData imageData) {
+    res.setStatus(HttpStatus.OK.value());
+    res.setContentLengthLong(imageData.getBinSize());
+	res.setContentType("application/octet-stream");
+	res.setHeader("x-MD5", imageData.getBinHash());
+
+	return is -> {
+	  StreamUtils.copy(is, res.getOutputStream());
+	  return null;
+	};
   }
   
 }

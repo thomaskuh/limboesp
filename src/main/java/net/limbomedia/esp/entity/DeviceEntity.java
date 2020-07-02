@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import net.limbomedia.esp.api.DeviceState;
@@ -83,6 +84,20 @@ public class DeviceEntity extends IdEntity {
   @JoinColumn(name = "fk_version_id", nullable = true, foreignKey = @ForeignKey(name = "fk__device__version"))
   private VersionEntity version;
 
+  /**
+   * Data image for device.
+   */
+  @OneToOne(mappedBy = "device")
+  private ImageDataEntity imageData;
+
+  public ImageDataEntity getImageData() {
+    return imageData;
+  }
+  
+  public void setImageData(ImageDataEntity imageData) {
+    this.imageData = imageData;
+  }
+  
   public Platform getPlatform() {
     return platform;
   }

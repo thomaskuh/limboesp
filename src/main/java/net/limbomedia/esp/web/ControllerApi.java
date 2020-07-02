@@ -54,6 +54,12 @@ public class ControllerApi {
     return serviceMgmt.deviceUpdate(deviceId, body);
   }
   
+  @PostMapping("/device/{deviceId}/imageData")
+  public void deviceImageDataCreate(@PathVariable long deviceId, @RequestHeader(name="X-ul-filename") String headerFilename, HttpServletRequest req, HttpServletResponse res) throws IOException {
+    String filename = HttpUtils.base64Decode(headerFilename, null);
+    serviceMgmt.deviceImageDataCreate(deviceId, filename, req.getInputStream());
+  }
+  
   @GetMapping("/app")
   public List<App> appsGet(@RequestParam(name="platform", required=false) Platform filterPlatform) {
     return serviceMgmt.appsGet(filterPlatform);

@@ -25,7 +25,9 @@ public class Device implements Serializable {
   private App app;
   private Version versionCurrent;
   private Version versionLatest;
-
+  
+  private ImageData imageData;
+  
   public long getId() {
     return id;
   }
@@ -152,6 +154,14 @@ public class Device implements Serializable {
 
   public void setInfo(String info) {
     this.info = info;
+  }
+  
+  public ImageData getImageData() {
+    return imageData;
+  }
+  
+  public void setImageData(ImageData imageData) {
+    this.imageData = imageData;
   }
 
   @Override

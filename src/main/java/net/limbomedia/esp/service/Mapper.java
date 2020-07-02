@@ -2,9 +2,11 @@ package net.limbomedia.esp.service;
 
 import net.limbomedia.esp.api.App;
 import net.limbomedia.esp.api.Device;
+import net.limbomedia.esp.api.ImageData;
 import net.limbomedia.esp.api.Version;
 import net.limbomedia.esp.entity.AppEntity;
 import net.limbomedia.esp.entity.DeviceEntity;
+import net.limbomedia.esp.entity.ImageDataEntity;
 import net.limbomedia.esp.entity.VersionEntity;
 
 public class Mapper {
@@ -34,6 +36,10 @@ public class Mapper {
         to.setVersionCurrent(map(from.getVersion()));
       }
     }
+
+    if(from.getImageData() != null) {
+      to.setImageData(map(from.getImageData()));
+    }
     
     return to;
   }
@@ -57,5 +63,18 @@ public class Mapper {
     to.setBinHash(from.getBinHash());
     return to;
   }
-  
+
+  public static ImageData map(ImageDataEntity from) {
+    ImageData to = new ImageData();
+    to.setId(from.getId());
+    to.setNr(from.getNr());
+    to.setName(from.getName());
+    to.setTs(from.getTs());
+    to.setTsFetch(from.getTsFetch());
+    to.setBinId(from.getBinId());
+    to.setBinSize(from.getBinSize());
+    to.setBinHash(from.getBinHash());
+    return to;
+  }
+
 }

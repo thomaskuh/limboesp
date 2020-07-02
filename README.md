@@ -3,7 +3,9 @@
 LimboESP is your nice and simple OTA firmware update server for ESP8266 and ESP32 devices.
 
 ## Features
-* Handles ESP8266 and ESP32 HTTP OTA firmware update requests.
+* Manage ESP8266 and ESP32 devices and app binaries for that devices.
+* Handles HTTP OTA firmware update requests.
+* Handles HTTP OTA spiffs data image update requests.
 * Web interface for device and app management.
 * Upload your binaries (generated via arduino, platform.io, toolchain).
 * LimboESP keeps track of always having the latest version on your devices.

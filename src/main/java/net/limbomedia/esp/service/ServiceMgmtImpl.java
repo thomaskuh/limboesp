@@ -31,9 +31,11 @@ import net.limbomedia.esp.api.Platform;
 import net.limbomedia.esp.api.Version;
 import net.limbomedia.esp.entity.AppEntity;
 import net.limbomedia.esp.entity.DeviceEntity;
+import net.limbomedia.esp.entity.ImageDataEntity;
 import net.limbomedia.esp.entity.VersionEntity;
 import net.limbomedia.esp.repo.RepoApp;
 import net.limbomedia.esp.repo.RepoDevice;
+import net.limbomedia.esp.repo.RepoImageData;
 import net.limbomedia.esp.repo.RepoVersion;
 
 @Service
@@ -48,6 +50,9 @@ public class ServiceMgmtImpl implements ServiceMgmt {
 
   @Autowired
   private RepoVersion repoVersion;
+  
+  @Autowired
+  private RepoImageData repoImageData;
   
   @Autowired
   private BinStore binStore;
@@ -133,6 +138,62 @@ public class ServiceMgmtImpl implements ServiceMgmt {
     version.setBinSize(binSize);
     version.setBinHash(binHash);
     version = repoVersion.save(version);
+  }
+  
+  @Override
+  public void deviceImageDataCreate(long deviceId, String filename, InputStream is) {
+    DeviceEntity device = repoDevice.findById(deviceId).orElseThrow(() -> new NotFoundException());
+    
+    ValidatorApp.validateVersionCreate(filename, is);
+    
+    String binId = null;
+    long binSize = 0;
+    String binHash = null;
+
+    try {
+      binId = binStore.write(is);
+      binSize = binStore.size(binId);
+      binHash = binStore.readStream(binId, stream -> {
+        Hasher hasher = hfMd5.newHasher();
+        ByteStreams.copy(stream, Funnels.asOutputStream(hasher));
+        return hasher.hash().toString();
+      });
+    } catch (IOException e) {
+      throw new SystemException(e);
+    }
+
+    try {
+      ValidatorApp.validateDeviceImageData(binSize, binHash);
+    } catch(ValidationException ve) {
+      try {
+        binStore.delete(binId);
+      } catch (IOException e) {/* dont care if single files gets lost */}
+      throw ve;
+    }
+
+    ImageDataEntity imageData = device.getImageData();
+    if(imageData == null) {
+      imageData = new ImageDataEntity();
+      imageData.setDevice(device);
+      imageData.setName(filename);
+      imageData.setTs(System.currentTimeMillis());
+      imageData.setBinId(binId);
+      imageData.setBinSize(binSize);
+      imageData.setBinHash(binHash);
+      imageData = repoImageData.save(imageData);
+    }
+    else {
+      try {
+        binStore.delete(imageData.getBinId());
+      } catch (IOException e) {/* dont care if single files gets lost */}
+
+      imageData.setName(filename);
+      imageData.setTs(System.currentTimeMillis());
+      imageData.setTsFetch(0);
+      imageData.setBinId(binId);
+      imageData.setBinSize(binSize);
+      imageData.setBinHash(binHash);
+    }
   }
 
   @Override

@@ -80,4 +80,14 @@ public class ValidatorApp {
     ve.throwOnDetails();
   }
 
+  public static void validateDeviceImageData(long binSize, String binHash) {
+    ValidationException ve = new ValidationException();
+
+    if(binSize == 0) {
+      ve.withDetail(new ErrorDetail(Errors.VAL_VERSION_BIN_EMPTY.name()));
+    }
+	    
+    ve.throwOnDetails();
+  }  
+
 }

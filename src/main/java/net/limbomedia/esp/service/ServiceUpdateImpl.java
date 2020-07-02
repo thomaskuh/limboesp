@@ -17,6 +17,7 @@ import net.limbomedia.esp.api.Platform;
 import net.limbomedia.esp.api.UpdateHandler;
 import net.limbomedia.esp.entity.AppEntity;
 import net.limbomedia.esp.entity.DeviceEntity;
+import net.limbomedia.esp.entity.ImageDataEntity;
 import net.limbomedia.esp.entity.VersionEntity;
 import net.limbomedia.esp.repo.RepoDevice;
 
@@ -49,7 +50,7 @@ public class ServiceUpdateImpl implements ServiceUpdate {
     });
   }
   
-  private void checkDeliverUpdate(DeviceEntity dev, UpdateHandler updateHandler) {
+  private void checkDeliverUpdateApp(DeviceEntity dev, UpdateHandler updateHandler) {
     if(!DeviceState.APPROVED.equals(dev.getState())) {
       Loggy.UPDATE.info("Device not approved: {}.", dev);
       updateHandler.onNoUpdate();
@@ -88,6 +89,36 @@ public class ServiceUpdateImpl implements ServiceUpdate {
     }    
   }
   
+  private void checkDeliverUpdateData(DeviceEntity dev, UpdateHandler updateHandler) {
+    if(!DeviceState.APPROVED.equals(dev.getState())) {
+      Loggy.UPDATE.info("Device not approved: {}.", dev);
+      updateHandler.onNoUpdate();
+      return;
+    }
+    
+    ImageDataEntity imageData = dev.getImageData();
+    
+    if(imageData == null) {
+      Loggy.UPDATE.info("Data check -> No image: {}.", dev);
+      updateHandler.onNoUpdate();
+      return;
+    }
+
+    if(imageData.getTsFetch() != 0) {
+      Loggy.UPDATE.info("Data check -> Already on latest image: {}.", dev);
+      updateHandler.onNoUpdate();
+      return;
+    }
+    
+    Loggy.UPDATE.info("Data check -> Sending available update: {}.", dev);
+    try {
+      binStore.readStream(imageData.getBinId(), updateHandler.onUpdate(Mapper.map(imageData)));
+      imageData.setTsFetch(System.currentTimeMillis());
+    } catch (IOException e) {
+      Loggy.UPDATE.warn("Data check -> Update failed. {}.", e.getMessage());
+    }
+  }
+  
   @Override
   public void esp8266(Esp8266Request req, UpdateHandler updateHandler) {
     try {
@@ -106,8 +137,13 @@ public class ServiceUpdateImpl implements ServiceUpdate {
     dev.setSizeAppUsed(req.getSizeSketch());
     dev.setHashFirmware(req.getHashSketchMd5());
     dev.setInfo(req.getVersion());
-  
-    checkDeliverUpdate(dev, updateHandler);
+
+    if("spiffs".equals(req.getMode())) {
+      checkDeliverUpdateData(dev, updateHandler);
+    }
+    else {
+      checkDeliverUpdateApp(dev, updateHandler);
+    }
   }
 
   @Override
@@ -130,7 +166,12 @@ public class ServiceUpdateImpl implements ServiceUpdate {
     dev.setHashFirmware(req.getHashSketchMd5());
     dev.setInfo(req.getVersion());
     
-    checkDeliverUpdate(dev, updateHandler);
+    if("spiffs".equals(req.getMode())) {
+      checkDeliverUpdateData(dev, updateHandler);
+    }
+    else {
+      checkDeliverUpdateApp(dev, updateHandler);
+    }    
   }
 
 }

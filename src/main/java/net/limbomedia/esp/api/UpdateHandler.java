@@ -13,12 +13,21 @@ public interface UpdateHandler {
   void onNoUpdate();
 
   /**
-   * Called when there's an update available. Must return a consumer handling the
+   * Called when there's an app update available. Must return a consumer handling the
    * binary data stream.
    * 
    * @param size Binary size.
    * @return
    */
   IoFunction<InputStream, Void> onUpdate(Version version);
+
+  /**
+   * Called when there's an data update available. Must return a consumer handling the
+   * binary data stream.
+   * 
+   * @param size Binary size.
+   * @return
+   */
+  IoFunction<InputStream, Void> onUpdate(ImageData imageData);
 
 }
