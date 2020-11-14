@@ -6,9 +6,11 @@ app.factory('client', ['$http', function($http) {
 		devicesGet: () => $http.get('/api/device'),
 		deviceGet: (deviceId) => $http.get('/api/device/' + deviceId),
 		deviceUpdate: (deviceId, body) => $http.post('/api/device/' + deviceId, body),
+		deviceDelete: (deviceId) => $http.delete('/api/device/' + deviceId),
 		appsGet: (filterPlatform) => $http.get('/api/app', {params: {platform: filterPlatform}}),
 		appGet: (appId) => $http.get('/api/app/' + appId),
 		appUpdate: (appId, body) => $http.post('/api/app/' + appId, body),
+		appDelete: (appId) => $http.delete('/api/app/' + appId),
 		appCreate: (body) => $http.post('/api/app', body),
 		appVersionsGet: (appId) => $http.get('/api/app/' + appId + '/version')
 	}

@@ -4,7 +4,7 @@ app.component('pageApps', {
   controller: function(client) {
 	  var ctrl = this;
 	  
-	  ctrl.platforms = ["ESP8266", "ESP32"];
+	  ctrl.platforms = ["ESP32", "ESP8266"];
 	  
 	  ctrl.items = [];
 	  ctrl.nu = {name: 'My Awesome App', platform: ctrl.platforms[0]};

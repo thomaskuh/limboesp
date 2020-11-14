@@ -31,7 +31,7 @@
 			<td ng-if="!item.app">{{'GEN.NA'|translate}}</td>
 			<td ng-if="item.app">
 				{{item.app.name}}
-				<i ng-if="$ctrl.isUpToDate(item)" title="{{'GEN.UP_TO_DATE'|translate}}" class="fas fa-check"></i>
+				<i ng-if="$ctrl.isUpToDate(item)" title="{{'GEN.UPTODATE'|translate}}" class="fas fa-check"></i>
 			</td>
 			<td ng-if="!item.imageData">{{'GEN.NA'|translate}}</td>
 			<td ng-if="item.imageData && item.imageData.tsFetch == 0">

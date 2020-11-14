@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 @EntityScan(basePackageClasses = { PersistenceConfig.class, Bin.class })
 public class PersistenceConfig {
 
-  @Bean
-  public BinStore beanBinStore(DataSource dataSource) {
-    return new BinStoreDb(dataSource);
-  }
+	@Bean
+	public BinStore beanBinStore(DataSource dataSource) {
+		return new BinStoreDb(dataSource);
+	}
 
 }

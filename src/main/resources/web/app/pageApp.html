@@ -1,7 +1,7 @@
 <h1 class="title">{{'GEN.APP'|translate}}</h1>
 
 <div class="card">
-  <header class="card-header has-background-light">
+  <header class="card-header has-background-link">
     <p class="card-header-title">{{'GEN.CONFIG'|translate}}</p>
   </header>
   <div class="card-content">
@@ -9,6 +9,12 @@
       <div class="field">
         <label class="label">{{'GEN.NAME'|translate}}</label>
         <div class="control"><input class="input" type="text" ng-change="$ctrl.dirty = true" ng-model="$ctrl.item.name"></div>
+        <small>{{'GEN.NAME_APP_DESC'|translate}}</small>
+      </div>
+      <div class="field">
+        <label class="label">{{'GEN.KEY'|translate}}</label>
+        <div class="control"><input class="input" type="text" ng-change="$ctrl.dirty = true" ng-model="$ctrl.item.key"></div>
+        <small>{{'GEN.KEY_APP_DESC'|translate}}</small>
       </div>
       <div class="field">
         <label class="label">{{'GEN.PLATFORM'|translate}}</label>
@@ -23,7 +29,7 @@
 <br/>
 
 <div class="card">
-  <header class="card-header has-background-light">
+  <header class="card-header has-background-warning">
     <p class="card-header-title">{{'GEN.VERSIONS'|translate}}</p>
   </header>
   <div class="card-content">
@@ -57,4 +63,15 @@
       </tbody>
     </table>      
   </div>
+</div>
+
+
+<br/>
+<div class="card">
+	<header class="card-header has-background-danger">
+		<p class="card-header-title">{{'GEN.DANGER_ZONE'|translate}}</p>
+	</header>
+	<div class="card-content">
+		<button ng-click="$ctrl.delete()" class="button is-danger"><i class="fas fa-trash">&nbsp;</i>{{'ACTION.DELETE'|translate}} {{'GEN.APP'|translate}}</button>
+	</div>
 </div>

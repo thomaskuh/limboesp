@@ -1,7 +1,7 @@
 app.component('pageDevice', {
   templateUrl: 'app/pageDevice.html',
   bindings: {},
-  controller: function($scope, client, tkUploadService) {
+  controller: function($scope, $location, client, tkUploadService) {
     var ctrl = this;
 	  
     ctrl.states = ['NEW', 'APPROVED', 'BLOCKED'];
@@ -38,8 +38,14 @@ app.component('pageDevice', {
     };
     
     ctrl.save = function() {
-      var req = {name: ctrl.item.name, state: ctrl.item.state, appId: ctrl.item.app.id};
+      var req = {name: ctrl.item.name, secret: ctrl.item.secret, state: ctrl.item.state, appId: ctrl.item.app.id};
       client.deviceUpdate(ctrl.item.id, req).then(ctrl.setItem);
+    };
+    
+    ctrl.delete = function() {
+        client.deviceDelete(ctrl.item.id).then((resp) => {
+        	$location.path('/devices');
+          });
     };
     
     ctrl.undo = function() {

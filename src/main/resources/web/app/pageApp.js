@@ -1,10 +1,10 @@
 app.component('pageApp', {
   templateUrl: 'app/pageApp.html',
   bindings: {},
-  controller: function($scope, client, tkUploadService) {
+  controller: function($scope, $location, client, tkUploadService) {
 	  var ctrl = this;
 	  
-	  ctrl.platforms = ["ESP8266", "ESP32"];
+	  ctrl.platforms = ["ESP32", "ESP8266"];
 	  
 	  ctrl.dirty = false;
 	  
@@ -29,8 +29,14 @@ app.component('pageApp', {
 	  };
 	  
     ctrl.save = function() {
-      var req = {name: ctrl.item.name};
+      var req = {name: ctrl.item.name, key: ctrl.item.key};
       client.appUpdate(ctrl.item.id, req).then(ctrl.setItem);
+    };
+    
+    ctrl.delete = function() {
+        client.appDelete(ctrl.item.id).then((resp) => {
+        	$location.path('/apps');
+        });
     };
     
     ctrl.undo = function() {

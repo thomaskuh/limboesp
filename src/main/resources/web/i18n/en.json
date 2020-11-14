@@ -3,9 +3,11 @@
     "TITLE": "LimboESP",
     "ADDRESS": "Address",
     "APP": "App",
+    "APP_DEV_DESC": "Deliver the latest version of this app to the device.",
     "APPS": "Apps",
     "CONFIG": "Configuration",
     "CURRENT": "Current",
+    "DANGER_ZONE": "Danger zone",
     "DATE": "Date",
     "DEVICE": "Device",
     "DEVICES": "Devices",
@@ -14,15 +16,22 @@
     "HASH": "Hash",
     "ID": "ID",
     "INFO": "Info",
+    "KEY": "Key",
+    "KEY_APP_DESC": "By giving your app a key it will be served on an its own PUBLIC URL (/update/app/KEY). Use for (anonymous) production devices following one app update track without device management and the need to be approved and authorized.",
     "LATEST": "Latest",
     "LAST_CHECK": "Last check",
     "LAST_UPDATE": "Last update",
     "NA": "N/A",
     "NAME": "Name",
+    "NAME_DEV_DESC": "Give your device a unique name if you cannot remember MACs or UUIDs.",
+    "NAME_APP_DESC": "Give your app a unique name.",
     "PLATFORM": "Platform",
     "REGISTERED": "Registered",
+    "SECRET": "Secret",
+    "SECRET_DEV_DESC": "Authentication: Secret in device request must match, if defined.",
     "SIZE": "Size",
     "STATE": "State",
+    "STATE_DEV_DESC": "Devices are registered as NEW with the first incoming request containing a new uuid. APPROVE to assign an app or BLOCK if you dont know the device and smell spam.",
     "UPTODATE": "Up-to-date",
     "UUID": "UUID",
     "USED": "Used",
@@ -36,6 +45,7 @@
   "ACTION": {
     "CANCEL": "Cancel",
     "CREATE": "Create",
+    "DELETE": "Delete",
     "MANAGE": "Manage",
     "RELOAD": "Reload",
     "SAVE": "Save",
@@ -65,10 +75,13 @@
     "DETAIL": {
         "VAL_APP_NAME_INVALID": "Name must be specified.",
         "VAL_APP_NAME_EXISTS": "Name already exists.",
+        "VAL_APP_KEY_INVALID": "Key invalid. Only a-z,0-9,-,_ allowed.",
+        "VAL_APP_KEY_EXISTS": "Key already exists.",
         "VAL_APP_PLATFORM_INVALID": "Platform must be specified.",
         "VAL_VERSION_NAME_INVALID": "Name/Filename must be specified.",
         "VAL_VERSION_BIN_EMPTY": "Binary not transfered or empty.",
-        "VAL_VERSION_BIN_DUPE": "Same binary already bound to version {{no}} - {{name}}."
+        "VAL_VERSION_BIN_DUPE": "Same binary already bound to version {{no}} - {{name}}.",
+        "VAL_DEVICE_APP_UNAPPROVED": "App can only be assigned to approved devices."
     }
   }
 }

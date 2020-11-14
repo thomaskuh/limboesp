@@ -5,6 +5,7 @@
     <tr>
       <th>{{'GEN.ID'|translate}}</th>
       <th>{{'GEN.NAME'|translate}}</th>
+      <th>{{'GEN.KEY'|translate}}</th>
       <th>{{'GEN.PLATFORM'|translate}}</th>
       <th>
         <button ng-click="$ctrl.reload()" class="button"><i class="fas fa-sync">&nbsp;</i>{{'ACTION.RELOAD'|translate}}</button>
@@ -15,6 +16,7 @@
     <tr ng-repeat="item in $ctrl.items">
       <td>{{item.id}}</td>
       <td>{{item.name}}</td>
+      <td>{{item.key}}</td>
       <td>{{item.platform}}</td>
       <td>
         <a class="button is-link" href="#/app/{{item.id}}"><i class="fas fa-edit">&nbsp;</i>{{'ACTION.MANAGE'|translate}}</a>
@@ -29,6 +31,7 @@
         </div>
       </div>
     </td>
+    <td></td>
     <td>
       <div class="select">
         <select ng-model="$ctrl.nu.platform" ng-options="pl for pl in $ctrl.platforms"></select>

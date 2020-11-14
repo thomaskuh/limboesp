@@ -5,3 +5,7 @@ html {
 .fileinput {
 	display: none;
 }
+
+.main {
+	margin-top: 16px;
+}
