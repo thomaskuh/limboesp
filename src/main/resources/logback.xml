@@ -15,6 +15,7 @@
   <logger name="limboesp" level="info" />
   <logger name="org.kuhlins" level="info" />
   <logger name="limboesp.web" level="info" />
+  <logger name="org.springframework.core.LocalVariableTableParameterNameDiscoverer" level="error" />
 
   <root level="warn">
     <appender-ref ref="STDOUT" />

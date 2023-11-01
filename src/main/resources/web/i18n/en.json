@@ -1,87 +1,97 @@
 {
-  "GEN": {
-    "TITLE": "LimboESP",
-    "ADDRESS": "Address",
-    "APP": "App",
-    "APP_DEV_DESC": "Deliver the latest version of this app to the device.",
-    "APPS": "Apps",
-    "CONFIG": "Configuration",
-    "CURRENT": "Current",
-    "DANGER_ZONE": "Danger zone",
-    "DATE": "Date",
-    "DEVICE": "Device",
-    "DEVICES": "Devices",
-    "FLASH": "Flash",
-    "FREE": "Free",
-    "HASH": "Hash",
-    "ID": "ID",
-    "INFO": "Info",
-    "KEY": "Key",
-    "KEY_APP_DESC": "By giving your app a key it will be served on an its own PUBLIC URL (/update/app/KEY). Use for (anonymous) production devices following one app update track without device management and the need to be approved and authorized.",
-    "LATEST": "Latest",
-    "LAST_CHECK": "Last check",
-    "LAST_UPDATE": "Last update",
-    "NA": "N/A",
-    "NAME": "Name",
-    "NAME_DEV_DESC": "Give your device a unique name if you cannot remember MACs or UUIDs.",
-    "NAME_APP_DESC": "Give your app a unique name.",
-    "PLATFORM": "Platform",
-    "REGISTERED": "Registered",
-    "SECRET": "Secret",
-    "SECRET_DEV_DESC": "Authentication: Secret in device request must match, if defined.",
-    "SIZE": "Size",
-    "STATE": "State",
-    "STATE_DEV_DESC": "Devices are registered as NEW with the first incoming request containing a new uuid. APPROVE to assign an app or BLOCK if you dont know the device and smell spam.",
-    "UPTODATE": "Up-to-date",
-    "UUID": "UUID",
-    "USED": "Used",
-    "VERSION": "Version",
-    "VERSIONS": "Versions",
-    "WELCOME": "LimboESP - Your ESP OTA Firmware Update Manager",
-    "IMAGE_DATA": "Data image (SPIFFS)",
-    "PENDING": "Pending",
-    "FETCHED": "Fetched"
-  },
-  "ACTION": {
-    "CANCEL": "Cancel",
-    "CREATE": "Create",
-    "DELETE": "Delete",
-    "MANAGE": "Manage",
-    "RELOAD": "Reload",
-    "SAVE": "Save",
-    "UNDO": "Undo",
-    "UPLOAD": "Upload"
-  },
-  "LOGIN": {
-    "TITLE": "Login",
-    "USER": "Username",
-    "PASS": "Password",
-    "SUBMIT": "Let me in",
-    "IN": "Login",
-    "OUT": "Logout"
-  },
-  "MSG": {
-    "UPLOAD_OK": "Upload finished.",
-    "UPLOAD_NOK": "{{no}} files failed."
-  },
-  "ERROR": {
-    "NETWORK": "Network error.",
-    "SYSTEM": "System failure.",
-    "UNAUTHORIZED": "Unauthorized. Please log in.",
-    "FORBIDDEN": "Forbidden. Permission denied.",
-    "NOTFOUND": "Not found.",
-    "VALIDATION": "Validation failed.",
-    
-    "DETAIL": {
-        "VAL_APP_NAME_INVALID": "Name must be specified.",
-        "VAL_APP_NAME_EXISTS": "Name already exists.",
-        "VAL_APP_KEY_INVALID": "Key invalid. Only a-z,0-9,-,_ allowed.",
-        "VAL_APP_KEY_EXISTS": "Key already exists.",
-        "VAL_APP_PLATFORM_INVALID": "Platform must be specified.",
-        "VAL_VERSION_NAME_INVALID": "Name/Filename must be specified.",
-        "VAL_VERSION_BIN_EMPTY": "Binary not transfered or empty.",
-        "VAL_VERSION_BIN_DUPE": "Same binary already bound to version {{no}} - {{name}}.",
-        "VAL_DEVICE_APP_UNAPPROVED": "App can only be assigned to approved devices."
+    "GEN": {
+        "TITLE": "LimboESP",
+        "ADDRESS": "Address",
+        "APP": "App",
+        "APP_DEV_DESC": "Deliver the latest version of this app to the device.",
+        "APPS": "Apps",
+        "CONFIG": "Configuration",
+        "CURRENT": "Current",
+        "DANGER_ZONE": "Danger zone",
+        "DATE": "Date",
+        "DEVICE": "Device",
+        "DEVICES": "Devices",
+        "FLASH": "Flash",
+        "FREE": "Free",
+        "HASH": "Hash",
+        "ID": "ID",
+        "INFO": "Info",
+        "KEY": "Key",
+        "KEY_APP_DESC": "By giving your app a key it will be served on an its own PUBLIC URL (/update/app/KEY). Use for (anonymous) production devices following one app update track without device management and the need to be approved and authorized.",
+        "LATEST": "Latest",
+        "LAST_CHECK": "Last check",
+        "LAST_UPDATE": "Last update",
+        "NA": "N/A",
+        "NAME": "Name",
+        "NAME_DEV_DESC": "Give your device a unique name if you cannot remember MACs or UUIDs.",
+        "NAME_APP_DESC": "Give your app a unique name.",
+        "PLATFORM": "Platform",
+        "REGISTERED": "Registered",
+        "SECRET": "Secret",
+        "SECRET_DEV_DESC": "Authentication: Secret in device request must match, if defined.",
+        "SIZE": "Size",
+        "STATE": "State",
+        "STATE_DEV_DESC": "Devices are registered as NEW with the first incoming request containing a new uuid. APPROVE to assign an app or BLOCK if you dont know the device and smell spam.",
+        "UPTODATE": "Up-to-date",
+        "UUID": "UUID",
+        "USED": "Used",
+        "VERSION": "Version",
+        "VERSIONS": "Versions",
+        "WELCOME": "LimboESP - Your ESP OTA Firmware Update Manager",
+        "IMAGE_DATA": "Data image (SPIFFS)",
+        "PENDING": "Pending",
+        "FETCHED": "Fetched"
+    },
+    "ACTION": {
+        "CANCEL": "Cancel",
+        "CREATE": "Create",
+        "DELETE": "Delete",
+        "MANAGE": "Manage",
+        "RELOAD": "Reload",
+        "SAVE": "Save",
+        "UNDO": "Undo",
+        "UPLOAD": "Upload"
+    },
+    "LOGIN": {
+        "TITLE": "Login",
+        "USER": "Username",
+        "PASS": "Password",
+        "SUBMIT": "Let me in",
+        "IN": "Login",
+        "OUT": "Logout"
+    },
+    "MSG": {
+        "UPLOAD_OK": "Upload finished.",
+        "UPLOAD_NOK": "{{no}} files failed."
+    },
+    "error": {
+        "net": {
+            "gen": "Network error.",
+            "upload": "Upload failed."
+        },
+        "sys": {
+            "gen": "System failure."
+        },
+        "sec": {
+            "forbidden": "Forbidden. Permission denied.",
+            "unauthorized": "Unauthorized. Please log in."
+        },
+        "notfound": {
+            "gen": "Not found."
+        },
+        "val": {
+            "gen": "Validation failed."
+        },
+        "detail": {
+            "val_app_name_invalid": "Name must be specified.",
+            "val_app_name_exists": "Name already exists.",
+            "val_app_key_invalid": "Key invalid. Only a-z,0-9,-,_ allowed.",
+            "val_app_key_exists": "Key already exists.",
+            "val_app_platform_invalid": "Platform must be specified.",
+            "val_version_name_invalid": "Name/Filename must be specified.",
+            "val_version_bin_empty": "Binary not transfered or empty.",
+            "val_version_bin_dupe": "Same binary already bound to version {{no}} - {{name}}.",
+            "val_device_app_unapproved": "App can only be assigned to approved devices."
+        }
     }
-  }
 }

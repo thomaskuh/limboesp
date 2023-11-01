@@ -7,6 +7,4 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
-public interface RepoImageData extends JpaRepository<ImageDataEntity, Long> {
-
-}
+public interface RepoImageData extends JpaRepository<ImageDataEntity, Long> {}

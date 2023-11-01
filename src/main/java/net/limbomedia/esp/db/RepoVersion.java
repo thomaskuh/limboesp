@@ -7,6 +7,4 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
-public interface RepoVersion extends JpaRepository<VersionEntity, Long> {
-
-}
+public interface RepoVersion extends JpaRepository<VersionEntity, Long> {}
