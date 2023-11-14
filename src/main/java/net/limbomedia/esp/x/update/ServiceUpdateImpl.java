@@ -18,7 +18,7 @@ import net.limbomedia.esp.x.update.api.UpdateRequest;
 import net.limbomedia.esp.x.update.api.What;
 import net.limbomedia.esp.x.update.proto.Responder;
 import org.kuhlins.lib.binstore.BinStore;
-import org.kuhlins.lib.binstore.IoFunction;
+import org.kuhlins.lib.utils.io.IoFunction;
 import org.kuhlins.lib.webkit.ex.NotFoundException;
 import org.kuhlins.lib.webkit.ex.ValidationException;
 import org.kuhlins.lib.webkit.ex.model.ErrorDetail;

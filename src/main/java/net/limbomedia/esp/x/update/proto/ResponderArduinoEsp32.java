@@ -4,7 +4,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import net.limbomedia.esp.x.common.api.ImageData;
 import net.limbomedia.esp.x.common.api.Version;
-import org.kuhlins.lib.binstore.IoFunction;
+import org.kuhlins.lib.utils.io.IoFunction;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StreamUtils;
 

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.kuhlins.maven</groupId>
+        <artifactId>tk-maven-base</artifactId>
+        <version>0.3</version>
+    </parent>
+
     <groupId>net.limbomedia</groupId>
     <artifactId>limboesp</artifactId>
     <version>0.4-SNAPSHOT</version>
@@ -11,13 +18,6 @@
         <tag>HEAD</tag>
         <url>https://github.com/thomaskuh/limboesp</url>
     </scm>
-
-    <distributionManagement>
-        <repository>
-            <id>nexus.kuhlins.org</id>
-            <url>https://nexus.kuhlins.org/repository/maven-public</url>
-        </repository>
-    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
@@ -35,17 +35,17 @@
         <dependency>
             <groupId>org.kuhlins.lib</groupId>
             <artifactId>tk-lib-utils</artifactId>
-            <version>0.5</version>
+            <version>0.7</version>
         </dependency>
         <dependency>
             <groupId>org.kuhlins.lib</groupId>
             <artifactId>tk-lib-webkit</artifactId>
-            <version>0.2</version>
+            <version>0.3</version>
         </dependency>
         <dependency>
             <groupId>org.kuhlins.lib</groupId>
             <artifactId>tk-lib-binstore</artifactId>
-            <version>0.3</version>
+            <version>0.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,6 +54,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -82,70 +92,15 @@
 
     <build>
         <finalName>limboesp</finalName>
-
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
-                    <configuration>
-                        <release>17</release>
-                        <encoding>UTF-8</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.3.1</version>
-                    <configuration>
-                        <encoding>UTF-8</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.6.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.3.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.6.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.1.2</version>
-                    <configuration>
-                        <excludes>
-                            <exclude>**/*IT.java</exclude>
-                            <exclude>**/*Sample.java</exclude>
-                        </excludes>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.1</version>
-                    <configuration>
-                        <tagNameFormat>release/@{project.version}</tagNameFormat>
-                        <preparationGoals>clean verify docker:build</preparationGoals>
-                        <goals>deploy docker:build docker:push</goals>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>io.fabric8</groupId>
-                    <artifactId>docker-maven-plugin</artifactId>
-                    <version>0.43.4</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <preparationGoals>clean verify docker:build</preparationGoals>
+                    <goals>clean deploy docker:build docker:push</goals>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -182,32 +137,6 @@
                             </build>
                         </image>
                     </images>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.diffplug.spotless</groupId>
-                <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.40.0</version>
-                <configuration>
-                    <pom>
-                        <sortPom>
-                            <nrOfIndentSpace>4</nrOfIndentSpace>
-                        </sortPom>
-                    </pom>
-                    <json>
-                        <includes>
-                            <include>src/**/*.json</include>
-                        </includes>
-                        <gson></gson>
-                    </json>
-                    <java>
-                        <palantirJavaFormat>
-                            <version>2.38.0</version>
-                            <style>PALANTIR</style>
-                        </palantirJavaFormat>
-                        <removeUnusedImports></removeUnusedImports>
-                        <formatAnnotations></formatAnnotations>
-                    </java>
                 </configuration>
             </plugin>
         </plugins>

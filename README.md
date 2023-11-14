@@ -13,12 +13,12 @@ LimboESP is your nice and simple OTA firmware update server for ESP8266 and ESP3
 
 ## Setup and run (One-file-server with Java)
 ```
-# Java 8+ is required, so depending on your distribution type something like this:
+# Java 17+ is required, so depending on your distribution type something like this:
 sudo apt-get install default-jre-headless
 pacman -S jre-openjdk-headless
 
 # Get it
-wget -O limboesp.jar https://repo.kuhlins.org/artifactory/public/net/limbomedia/limboesp/0.1/limboesp-0.1.jar
+wget -O limboesp.jar https://nexus.kuhlins.org/repository/maven-public/net/limbomedia/limboesp/0.4/limboesp-0.4.jar
 
 # Run it
 # -Ddir specifies where to store config and data.
@@ -29,7 +29,7 @@ java -Ddir=/path/for/data -jar limboesp.jar
 
 ## Setup and run (Docker)
 ```
-docker run -d -p 8080:8080 -v DATA-DIR:/data limbomedia/limboesp
+docker run -d -p 8080:8080 -v DATA-DIR:/data limbomedia/limboesp:stable
 ```
 
 ## Configuration

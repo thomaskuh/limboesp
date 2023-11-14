@@ -3,7 +3,7 @@ package net.limbomedia.esp.x.update.proto;
 import java.io.InputStream;
 import net.limbomedia.esp.x.common.api.ImageData;
 import net.limbomedia.esp.x.common.api.Version;
-import org.kuhlins.lib.binstore.IoFunction;
+import org.kuhlins.lib.utils.io.IoFunction;
 
 public interface Responder {
 

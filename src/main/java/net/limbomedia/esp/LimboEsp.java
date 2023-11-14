@@ -2,6 +2,7 @@ package net.limbomedia.esp;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import org.kuhlins.lib.utils.cfg.Build;
 import org.kuhlins.lib.utils.cfg.Configurator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +24,7 @@ public class LimboEsp {
         Configurator.readSystemPropertiesFromPath(pathFileCfg);
         Configurator.readSystemPropertiesFromClasspath("/limboesp-default.cfg");
 
-        Loggy.CORE.info("Kickin up that thang...");
+        new Build().welcome(Loggy.CORE::info);
         Loggy.CORE.info("Data directory: {}", pathDirMain);
         Loggy.CORE.info("Config file   : {}.", pathFileCfg);
 
