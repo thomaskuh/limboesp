@@ -10,12 +10,12 @@
 
     <groupId>net.limbomedia</groupId>
     <artifactId>limboesp</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>0.4</version>
 
     <scm>
         <connection>scm:git:git://github.com/thomaskuh/limboesp.git</connection>
         <developerConnection>scm:git:git@github.com:thomaskuh/limboesp.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>release/0.4</tag>
         <url>https://github.com/thomaskuh/limboesp</url>
     </scm>
 
