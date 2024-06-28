@@ -1,6 +1,7 @@
-FROM alpine:3.18
+FROM alpine:3.20
+MAINTAINER LimboMedia <admin@limbomedia.net>
 
-RUN apk add --update --no-cache --allow-untrusted openjdk17-jre-headless
+RUN apk add --update --no-cache openjdk21-jre-headless
 
 ADD maven/limboesp.jar /limboesp.jar
 RUN mkdir data

@@ -13,7 +13,7 @@ LimboESP is your nice and simple OTA firmware update server for ESP8266 and ESP3
 
 ## Setup and run (One-file-server with Java)
 ```
-# Java 17+ is required, so depending on your distribution type something like this:
+# Java 21+ is required, so depending on your distribution type something like this:
 sudo apt-get install default-jre-headless
 pacman -S jre-openjdk-headless
 
