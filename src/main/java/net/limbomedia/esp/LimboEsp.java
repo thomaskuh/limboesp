@@ -21,8 +21,8 @@ public class LimboEsp {
 
         Configurator.createFileIfNotExisting(
                 pathFileCfg, () -> LimboEsp.class.getResourceAsStream("/limboesp-template.cfg"));
-        Configurator.readSystemPropertiesFromPath(pathFileCfg);
-        Configurator.readSystemPropertiesFromClasspath("/limboesp-default.cfg");
+        Configurator.readSystemPropertiesFromPath(pathFileCfg, false, false);
+        Configurator.readSystemPropertiesFromClasspath("/limboesp-default.cfg", false, false);
 
         new Build().welcome(Loggy.CORE::info);
         Loggy.CORE.info("Data directory: {}", pathDirMain);

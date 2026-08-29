@@ -5,26 +5,38 @@
     <parent>
         <groupId>org.kuhlins.maven</groupId>
         <artifactId>tk-maven-base</artifactId>
-        <version>0.3</version>
+        <version>0.6</version>
     </parent>
 
     <groupId>net.limbomedia</groupId>
     <artifactId>limboesp</artifactId>
     <version>0.5-SNAPSHOT</version>
-
+    
+    <properties>
+        <version.spring.boot>3.5.16</version.spring.boot>
+        <version.tk-lib>0.10-SNAPSHOT</version.tk-lib>
+    </properties>
+    
     <scm>
         <connection>scm:git:git://github.com/thomaskuh/limboesp.git</connection>
         <developerConnection>scm:git:git@github.com:thomaskuh/limboesp.git</developerConnection>
         <tag>HEAD</tag>
         <url>https://github.com/thomaskuh/limboesp</url>
     </scm>
+    
+    <distributionManagement>
+        <repository>
+            <id>repo.kuhlins.org</id>
+            <url>https://repo.kuhlins.org/maven2</url>
+        </repository>
+    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
-                <version>3.1.5</version>
+                <version>${version.spring.boot}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -35,17 +47,12 @@
         <dependency>
             <groupId>org.kuhlins.lib</groupId>
             <artifactId>tk-lib-utils</artifactId>
-            <version>0.7</version>
+            <version>${version.tk-lib}</version>
         </dependency>
         <dependency>
             <groupId>org.kuhlins.lib</groupId>
             <artifactId>tk-lib-webkit</artifactId>
-            <version>0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kuhlins.lib</groupId>
-            <artifactId>tk-lib-binstore</artifactId>
-            <version>0.4</version>
+			<version>${version.tk-lib}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -85,8 +92,8 @@
 
     <repositories>
         <repository>
-            <id>nexus.kuhlins.org</id>
-            <url>https://nexus.kuhlins.org/repository/maven-public</url>
+            <id>repo.kuhlins.org</id>
+            <url>https://repo.kuhlins.org/maven2</url>
         </repository>
     </repositories>
 
@@ -104,7 +111,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.1.5</version>
+                <version>${version.spring.boot}</version>
                 <executions>
                     <execution>
                         <goals>

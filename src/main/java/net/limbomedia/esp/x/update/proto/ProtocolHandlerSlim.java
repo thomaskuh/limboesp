@@ -39,7 +39,7 @@ public class ProtocolHandlerSlim implements ProtocolHandler {
         x.setInfo(req.getHeader("x-info"));
 
         serviceUpdate.updateDevice(
-                x, new ResponderSlim(res, HttpMethod.resolve(req.getMethod()) == HttpMethod.HEAD ? false : true));
+                x, new ResponderSlim(res, HttpMethod.valueOf(req.getMethod()) == HttpMethod.HEAD ? false : true));
     }
 
     @Override
@@ -56,6 +56,6 @@ public class ProtocolHandlerSlim implements ProtocolHandler {
         serviceUpdate.updateApp(
                 appKey,
                 x,
-                new ResponderSlim(res, HttpMethod.resolve(req.getMethod()) == HttpMethod.HEAD ? false : true));
+                new ResponderSlim(res, HttpMethod.valueOf(req.getMethod()) == HttpMethod.HEAD ? false : true));
     }
 }

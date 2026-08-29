@@ -1,6 +1,5 @@
 package net.limbomedia.esp.x.mgmt;
 
-import com.google.common.base.Objects;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -8,6 +7,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.kuhlins.lib.utils.binstore.BinStore;
+import org.kuhlins.lib.webkit.ex.NotFoundException;
+import org.kuhlins.lib.webkit.ex.SystemException;
+import org.kuhlins.lib.webkit.ex.ValidationException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.google.common.base.Objects;
+
 import net.limbomedia.esp.db.AppEntity;
 import net.limbomedia.esp.db.DeviceEntity;
 import net.limbomedia.esp.db.ImageDataEntity;
@@ -24,14 +35,6 @@ import net.limbomedia.esp.x.mgmt.api.AppUpdate;
 import net.limbomedia.esp.x.mgmt.api.Device;
 import net.limbomedia.esp.x.mgmt.api.DeviceUpdate;
 import net.limbomedia.esp.x.mgmt.platform.PlatformHandler;
-import org.kuhlins.lib.binstore.BinStore;
-import org.kuhlins.lib.webkit.ex.NotFoundException;
-import org.kuhlins.lib.webkit.ex.SystemException;
-import org.kuhlins.lib.webkit.ex.ValidationException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)

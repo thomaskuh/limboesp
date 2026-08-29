@@ -43,7 +43,7 @@ public class ProtocolHandlerArduinoEsp8266 implements ProtocolHandler {
         serviceUpdate.updateDevice(
                 x,
                 new ResponderArduinoEsp8266(
-                        res, HttpMethod.resolve(req.getMethod()) == HttpMethod.HEAD ? false : true));
+                        res, HttpMethod.valueOf(req.getMethod()) == HttpMethod.HEAD ? false : true));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ProtocolHandlerArduinoEsp8266 implements ProtocolHandler {
                 appKey,
                 x,
                 new ResponderArduinoEsp8266(
-                        res, HttpMethod.resolve(req.getMethod()) == HttpMethod.HEAD ? false : true));
+                        res, HttpMethod.valueOf(req.getMethod()) == HttpMethod.HEAD ? false : true));
     }
 
     // Explaination:

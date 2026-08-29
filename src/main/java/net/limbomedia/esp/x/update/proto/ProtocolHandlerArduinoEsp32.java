@@ -42,7 +42,7 @@ public class ProtocolHandlerArduinoEsp32 implements ProtocolHandler {
 
         serviceUpdate.updateDevice(
                 x,
-                new ResponderArduinoEsp32(res, HttpMethod.resolve(req.getMethod()) == HttpMethod.HEAD ? false : true));
+                new ResponderArduinoEsp32(res,  HttpMethod.valueOf(req.getMethod()) == HttpMethod.HEAD ? false : true));
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ProtocolHandlerArduinoEsp32 implements ProtocolHandler {
         serviceUpdate.updateApp(
                 appKey,
                 x,
-                new ResponderArduinoEsp32(res, HttpMethod.resolve(req.getMethod()) == HttpMethod.HEAD ? false : true));
+                new ResponderArduinoEsp32(res, HttpMethod.valueOf(req.getMethod()) == HttpMethod.HEAD ? false : true));
     }
 
     // Explaination:

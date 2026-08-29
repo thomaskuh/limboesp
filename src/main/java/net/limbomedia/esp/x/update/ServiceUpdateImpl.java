@@ -3,6 +3,17 @@ package net.limbomedia.esp.x.update;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
+
+import org.kuhlins.lib.utils.binstore.BinStore;
+import org.kuhlins.lib.utils.io.IoFunction;
+import org.kuhlins.lib.webkit.ex.NotFoundException;
+import org.kuhlins.lib.webkit.ex.ValidationException;
+import org.kuhlins.lib.webkit.ex.model.ErrorDetail;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import net.limbomedia.esp.Loggy;
 import net.limbomedia.esp.db.AppEntity;
 import net.limbomedia.esp.db.DeviceEntity;
@@ -17,15 +28,6 @@ import net.limbomedia.esp.x.update.api.Errors;
 import net.limbomedia.esp.x.update.api.UpdateRequest;
 import net.limbomedia.esp.x.update.api.What;
 import net.limbomedia.esp.x.update.proto.Responder;
-import org.kuhlins.lib.binstore.BinStore;
-import org.kuhlins.lib.utils.io.IoFunction;
-import org.kuhlins.lib.webkit.ex.NotFoundException;
-import org.kuhlins.lib.webkit.ex.ValidationException;
-import org.kuhlins.lib.webkit.ex.model.ErrorDetail;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
